@@ -1,14 +1,19 @@
 <template>
   <form class="form" @submit.prevent="submitForm">
-    <!--
-      TASK:
-      1. Add two input fields:
-         - Name (text)
-         - Age (number)
-      2. Bind both inputs using v-model.
-      3. Add a submit button.
-      4. On submit, call submitForm() to emit 'add-student' with {name, age}.
-    -->
+    <input 
+      type="text" 
+      placeholder="Enter name" 
+      v-model="name" 
+      required
+    />
+    <input 
+      type="number" 
+      placeholder="Enter age" 
+      v-model.number="age" 
+      required
+      min="0"
+    />
+    <button type="submit">Add Student</button>
   </form>
 </template>
 
@@ -17,7 +22,6 @@ import { ref } from 'vue'
 
 const name = ref('')
 const age = ref(null)
-
 const emit = defineEmits(['add-student'])
 
 const submitForm = () => {

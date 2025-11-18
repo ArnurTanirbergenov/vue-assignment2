@@ -1,11 +1,13 @@
 <template>
   <div class="list">
-      <!--
-        TASK:
-        1. Display all students in a list using the StudentCard component to display each student.
-        2. Use the transition-group component to animate the list.
-        3. Catch the 'remove' event and emit 'remove-student' from this component with the student's id.
-    -->
+    <transition-group name="fade" tag="div" class="cards">
+      <StudentCard
+        v-for="student in students"
+        :key="student.id"
+        :student="student"
+        @remove="remove(student.id)"
+      />
+    </transition-group>
   </div>
 </template>
 
